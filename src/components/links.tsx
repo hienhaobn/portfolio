@@ -9,11 +9,11 @@ export default function Links() {
   const links: { icon: IconType; href: string }[] = [
     {
       icon: SiGmail,
-      href: 'mailto:joydev.dev@gmail.com',
+      href: 'mailto:joydev9x@gmail.com',
     },
     {
       icon: SiGithub,
-      href: 'https://github.com/joydev-dev',
+      href: 'https://github.com/hienhaobn',
     },
     {
       icon: SiMedium,
