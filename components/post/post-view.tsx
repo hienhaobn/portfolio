@@ -9,7 +9,10 @@ type PostViewProps = {
 
 export function PostView({ url, title, description, pubDate }: PostViewProps) {
   return (
-    <ButtonLink href={url}>
+    <ButtonLink
+      href={url}
+      className="bg-surface-background text-main-foreground text-left"
+    >
       <h2 className="font-heading w500:text-lg text-xl">{title}</h2>
       <p className="w500:text-sm mt-3 mb-5">{description}</p>
       <div className="flex w-max items-center">
