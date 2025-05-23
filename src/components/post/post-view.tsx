@@ -1,22 +1,6 @@
-import { ButtonLink } from "../button/button-link";
 import { Post } from "post-type";
-
-/**
- * Giới hạn độ dài của text và thêm dấu "..." nếu vượt quá
- */
-function limitText(text: string, maxLength: number = 150): string {
-  if (!text) return '';
-  if (text.length <= maxLength) return text;
-  
-  // Cắt đến vị trí maxLength và tìm khoảng trắng gần nhất để tránh cắt giữa từ
-  const truncated = text.substring(0, maxLength);
-  const lastSpace = truncated.lastIndexOf(' ');
-  
-  // Nếu không tìm thấy khoảng trắng hoặc khoảng trắng ở đầu, cắt tại maxLength
-  const breakpoint = lastSpace > 0 ? lastSpace : maxLength;
-  
-  return text.substring(0, breakpoint) + '...';
-}
+import { ButtonLink } from "../button/button-link";
+import { limitText } from "./utils/text";
 
 type PostViewProps = {
   url: string;
@@ -25,7 +9,9 @@ type PostViewProps = {
 
 export function PostView({ url, post }: PostViewProps) {
   const { title, description, publishedAt } = post;
-  const displayDescription = description ? limitText(description, 250) : "No description available";
+  const displayDescription = description
+    ? limitText(description, 250)
+    : "No description available";
 
   return (
     <ButtonLink
@@ -35,7 +21,7 @@ export function PostView({ url, post }: PostViewProps) {
     >
       <div className="flex-grow flex flex-col">
         <h2 className="font-heading w500:text-lg text-xl mb-2">{title}</h2>
-        
+
         {/* Container với chiều cao cố định */}
         <div className="relative h-[120px] mb-4 overflow-hidden">
           <p className="w500:text-sm">{displayDescription}</p>
@@ -43,7 +29,7 @@ export function PostView({ url, post }: PostViewProps) {
           <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-surface-background to-transparent"></div>
         </div>
       </div>
-      
+
       <div className="flex w-max items-center mt-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
