@@ -21,10 +21,10 @@ export default function Nav() {
     //   path: "/projects",
     //   label: "Projects",
     // },
-    {
-      path: "/blog",
-      label: "Blog",
-    },
+    // {
+    //   path: "/blog",
+    //   label: "Blog",
+    // },
   ];
   return (
     <div className="fixed top-5 left-0 z-50 w-full">
