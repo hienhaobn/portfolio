@@ -4,15 +4,17 @@ import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import { ThemeProvider } from "@/components/theme-provider";
 import Nav from "@/components/nav";
+import { generateSEOMetadata } from "@/lib/seo";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
 
-export const metadata: Metadata = {
-  title: "Joy Dev",
-};
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Joy Dev - Frontend Developer & Tech Enthusiast",
+  description: "Personal portfolio and blog of Joy Dev, a passionate frontend developer sharing insights about web development, React, Next.js, and modern technologies.",
+});
 
 export default function RootLayout({
   children,

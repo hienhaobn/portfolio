@@ -12,11 +12,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   return await sanity.fetch(
     `
     *[_type == "post" && slug.current == $slug][0] {
-      _id, 
-      title, 
-      slug, 
-      publishedAt, 
-      description, 
+      _id,
+      title,
+      slug,
+      publishedAt,
+      description,
       body,
       tags,
       coverImage,
@@ -36,5 +36,26 @@ export async function getPostByCategory(category: string) {
     _id, title, slug, publishedAt, description, body
   }`,
     { category }
+  );
+}
+
+// Optimized query for static generation (only gets slug and metadata)
+export async function getPostSlugsForStaticGeneration(): Promise<{ slug: string; isFeatured?: boolean }[]> {
+  return await sanity.fetch(`
+    *[_type == "post" && visibility == "public"] | order(publishedAt desc) {
+      "slug": slug.current,
+      isFeatured
+    }
+  `);
+}
+
+// Get recent posts for static generation
+export async function getRecentPostSlugs(limit: number = 50): Promise<{ slug: string }[]> {
+  return await sanity.fetch(
+    `
+    *[_type == "post" && visibility == "public"] | order(publishedAt desc)[0...$limit] {
+      "slug": slug.current
+    }`,
+    { limit: limit - 1 } // GROQ uses 0-based indexing
   );
 }
