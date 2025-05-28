@@ -2,7 +2,14 @@
 
 import Experience from "@/components/sections/experience";
 import Skills from "@/components/sections/skills";
-import { motion, useMotionTemplate, useMotionValue, useTransform, animate, useInView } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useTransform,
+  animate,
+  useInView,
+} from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const fadeIn = {
@@ -125,7 +132,7 @@ export default function About() {
           rotateX,
           rotateY,
           transformStyle: "preserve-3d",
-          perspective: 800
+          perspective: 800,
         }}
         className="relative z-10"
       >
@@ -157,24 +164,21 @@ export default function About() {
           >
             <p className="border-l-4 border-secondary pl-4 py-2 bg-gradient-to-r from-secondary/5 to-transparent rounded-r-md">
               I&apos;m a Software Engineer with over 4 years of professional
-              experience in web and mobile development, focusing on ReactJS, Next.js,
-              and React Native. I&apos;ve also taken on leadership roles and worked
-              directly with international clients across Japan, Korea, Poland, and
-              Vietnam.
+              experience in web and mobile development, focusing on ReactJS,
+              Next.js, and React Native. I&apos;ve also taken on leadership
+              roles and worked directly with international clients across Japan,
+              Korea, Poland, and Vietnam.
             </p>
             <div className="absolute -left-1 top-0 h-full w-1 bg-secondary/30 blur-sm" />
           </motion.div>
 
-          <motion.p
-            whileHover={{ scale: 1.01 }}
-            className="pl-4"
-          >
-            I&apos;ve been involved in diverse projects such as social networking
-            platforms, crypto exchanges (CEX), NFT minting platforms, internal
-            enterprise tools, and education/job apps. In these projects, I&apos;ve
-            handled everything from building UI components, managing state,
-            integrating APIs, to performance optimization and production
-            deployment.
+          <motion.p whileHover={{ scale: 1.01 }} className="pl-4">
+            I&apos;ve been involved in diverse projects such as social
+            networking platforms, crypto exchanges (CEX), NFT minting platforms,
+            internal enterprise tools, and education/job apps. In these
+            projects, I&apos;ve handled everything from building UI components,
+            managing state, integrating APIs, to performance optimization and
+            production deployment.
           </motion.p>
 
           <motion.p
@@ -192,16 +196,18 @@ export default function About() {
           initial={{
             opacity: 0,
             y: 50,
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+            boxShadow:
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
           }}
           whileInView={{
             opacity: 1,
-            y: 0
+            y: 0,
           }}
           viewport={{ once: true }}
           whileHover={{
-            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
-            y: -5
+            boxShadow:
+              "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+            y: -5,
           }}
           className="bg-gradient-to-br from-transparent via-secondary/5 to-transparent p-6 rounded-lg border border-secondary/20 relative"
         >
@@ -214,16 +220,18 @@ export default function About() {
           initial={{
             opacity: 0,
             y: 50,
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+            boxShadow:
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
           }}
           whileInView={{
             opacity: 1,
-            y: 0
+            y: 0,
           }}
           viewport={{ once: true }}
           whileHover={{
-            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
-            y: -5
+            boxShadow:
+              "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+            y: -5,
           }}
           className="bg-gradient-to-br from-transparent via-primary/5 to-transparent p-6 rounded-lg border border-primary/20 relative"
         >
@@ -235,15 +243,27 @@ export default function About() {
       {/* Add custom CSS for animations */}
       <style jsx global>{`
         @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-          100% { transform: translateY(0px); }
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
         }
 
         @keyframes float-delay {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
-          100% { transform: translateY(0px); }
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-15px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
         }
 
         .animate-float {
