@@ -51,7 +51,7 @@ export default function About() {
     if (isTitleInView) {
       let iteration = 0;
       const originalText = "About Me";
-      
+
       const interval = setInterval(() => {
         setTitleText(
           originalText
@@ -64,14 +64,14 @@ export default function About() {
             })
             .join("")
         );
-        
+
         if (iteration >= originalText.length) {
           clearInterval(interval);
         }
-        
+
         iteration += 1 / 3;
       }, 50);
-      
+
       return () => clearInterval(interval);
     }
   }, [isTitleInView]);
@@ -79,18 +79,18 @@ export default function About() {
   // Animated mouse follower
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  
+
   useEffect(() => {
     const xPos = mousePosition.x - window.innerWidth / 2;
     const yPos = mousePosition.y - window.innerHeight / 2;
-    
+
     animate(x, xPos * 0.1, { type: "spring", stiffness: 50, damping: 20 });
     animate(y, yPos * 0.1, { type: "spring", stiffness: 50, damping: 20 });
-  }, [mousePosition.x, mousePosition.y]);
-  
+  }, [mousePosition.x, mousePosition.y, x, y]);
+
   const rotateX = useTransform(y, [-100, 100], [5, -5]);
   const rotateY = useTransform(x, [-100, 100], [-5, 5]);
-  
+
   const gradient = useMotionTemplate`
     radial-gradient(
       circle at ${mousePosition.x}px ${mousePosition.y}px,
@@ -103,11 +103,11 @@ export default function About() {
   return (
     <div className="font-base relative overflow-hidden">
       {/* Interactive background */}
-      <motion.div 
+      <motion.div
         className="fixed inset-0 z-[-2]"
         style={{ background: gradient }}
       />
-      
+
       {/* Floating shapes */}
       <div className="absolute top-20 left-20 z-[-1] opacity-20 animate-float">
         <div className="bg-secondary h-16 w-16 rounded-full blur-xl" />
@@ -121,7 +121,7 @@ export default function About() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        style={{ 
+        style={{
           rotateX,
           rotateY,
           transformStyle: "preserve-3d",
@@ -132,7 +132,7 @@ export default function About() {
         <h1 className="mb-8 text-2xl font-heading sm:text-4xl bg-gradient-to-r from-secondary to-primary bg-clip-text">
           {titleText}
         </h1>
-        <motion.div 
+        <motion.div
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ delay: 1, duration: 0.8 }}
@@ -187,19 +187,19 @@ export default function About() {
           </motion.p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={itemVariants}
-          initial={{ 
+          initial={{
             opacity: 0,
             y: 50,
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)" 
+            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
           }}
-          whileInView={{ 
+          whileInView={{
             opacity: 1,
             y: 0
           }}
           viewport={{ once: true }}
-          whileHover={{ 
+          whileHover={{
             boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
             y: -5
           }}
@@ -209,19 +209,19 @@ export default function About() {
           <Skills />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={itemVariants}
-          initial={{ 
+          initial={{
             opacity: 0,
             y: 50,
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)" 
+            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
           }}
-          whileInView={{ 
+          whileInView={{
             opacity: 1,
             y: 0
           }}
           viewport={{ once: true }}
-          whileHover={{ 
+          whileHover={{
             boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
             y: -5
           }}
@@ -239,27 +239,27 @@ export default function About() {
           50% { transform: translateY(-20px); }
           100% { transform: translateY(0px); }
         }
-        
+
         @keyframes float-delay {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-15px); }
           100% { transform: translateY(0px); }
         }
-        
+
         .animate-float {
           animation: float 7s ease-in-out infinite;
         }
-        
+
         .animate-float-delay {
           animation: float-delay 9s ease-in-out infinite;
         }
-        
+
         :root {
           --primary-rgb: 255, 159, 0;
           --secondary-rgb: 123, 97, 255;
           --background-rgb: 255, 255, 255;
         }
-        
+
         @media (prefers-color-scheme: dark) {
           :root {
             --background-rgb: 10, 10, 10;

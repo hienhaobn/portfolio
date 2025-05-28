@@ -65,7 +65,7 @@ export default function Home() {
         setNameText(
           originalText
             .split("")
-            .map((letter, index) => {
+            .map((_, index) => {
               if (index < iteration) {
                 return originalText[index];
               }
@@ -77,7 +77,7 @@ export default function Home() {
         setHomeText(
           originalHomeText
             .split("")
-            .map((letter, index) => {
+            .map((_, index) => {
               if (index < iteration) {
                 return originalHomeText[index];
               }
@@ -107,7 +107,7 @@ export default function Home() {
 
     animate(x, xPos * 0.1, { type: "spring", stiffness: 50, damping: 20 });
     animate(y, yPos * 0.1, { type: "spring", stiffness: 50, damping: 20 });
-  }, [mousePosition.x, mousePosition.y]);
+  }, [mousePosition.x, mousePosition.y, x, y]);
 
   const rotateX = useTransform(y, [-100, 100], [5, -5]);
   const rotateY = useTransform(x, [-100, 100], [-5, 5]);

@@ -14,11 +14,8 @@ interface BlogSlugPageProps {
   }>;
 }
 
-// Best Practice: Smart ISR based on environment
-export const revalidate =
-  process.env.NODE_ENV === "production"
-    ? 3600 // Production: 1 hour (stable content)
-    : 60; // Development: 1 minute (frequent changes)
+// Best Practice: ISR for dynamic content updates
+export const revalidate = 3600; // Revalidate every hour
 
 export async function generateStaticParams() {
   if (process.env.NODE_ENV === "development") {
